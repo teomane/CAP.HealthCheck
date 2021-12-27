@@ -24,7 +24,7 @@ namespace Sample.RabbitMQ.PostgreSql
             services.AddCap(options =>
             {
                 options.UsePostgreSql("Host=localhost;Port=5432;Database=postgres;Username=admin;Password=admin");
-                options.UseRabbitMQ("localhost:5672");
+                options.UseRabbitMQ("localhost");
             });
             
             services.AddHealthChecks()
@@ -33,6 +33,7 @@ namespace Sample.RabbitMQ.PostgreSql
                     setup.AddPostgreSqlConnectionCheck();
                     setup.AddPostgreSqlPublishedTableCheck();
                     setup.AddPostgreSqlReceivedTableCheck();
+                    setup.AddRabbitMQConnectionCheck();
                 });
         }
 

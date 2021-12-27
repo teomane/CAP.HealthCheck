@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\DotNetCore.CAP.HealthCheck.PostgreSql\DotNetCore.CAP.HealthCheck.PostgreSql.csproj" />
+      <ProjectReference Include="..\..\src\DotNetCore.CAP.HealthCheck.RabbitMQ\DotNetCore.CAP.HealthCheck.RabbitMQ.csproj" />
       <ProjectReference Include="..\..\src\DotNetCore.CAP.HealthCheck\DotNetCore.CAP.HealthCheck.csproj" />
     </ItemGroup>
 

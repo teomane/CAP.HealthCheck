@@ -5,7 +5,7 @@ using DotNetCore.CAP.HealthCheck.PostgreSql.Published;
 using DotNetCore.CAP.HealthCheck.PostgreSql.Received;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace DotNetCore.CAP.HealthCheck.PostgreSql
+namespace DotNetCore.CAP.HealthCheck
 {
     public static class CapHealthCheckOptionsExtensions
     {
