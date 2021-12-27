@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{36E0336E-6794-4D60-A3E3-822E3E550B93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.CAP.HealthCheck", "src\DotNetCore.CAP.HealthCheck\DotNetCore.CAP.HealthCheck.csproj", "{960FBB80-6686-4A9D-9E77-D5C52F12DE10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.CAP.HealthCheck.PostgreSql", "src\DotNetCore.CAP.HealthCheck.PostgreSql\DotNetCore.CAP.HealthCheck.PostgreSql.csproj", "{E7D19F75-FF47-4F24-9DF9-256925549440}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{D51EC8F1-360D-49AE-96A4-3EAA9E210269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.RabbitMQ.PostgreSql", "samples\Sample.RabbitMQ.PostgreSql\Sample.RabbitMQ.PostgreSql.csproj", "{395113F2-140B-4BBB-AE7F-D6362A6E3E6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{90B16463-036F-47B6-B907-2D7E0EB86D34}"
+	ProjectSection(SolutionItems) = preProject
+		infrastructure\docker-compose-rabbitmq-postgresql.yml = infrastructure\docker-compose-rabbitmq-postgresql.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{960FBB80-6686-4A9D-9E77-D5C52F12DE10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960FBB80-6686-4A9D-9E77-D5C52F12DE10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960FBB80-6686-4A9D-9E77-D5C52F12DE10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960FBB80-6686-4A9D-9E77-D5C52F12DE10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7D19F75-FF47-4F24-9DF9-256925549440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7D19F75-FF47-4F24-9DF9-256925549440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7D19F75-FF47-4F24-9DF9-256925549440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7D19F75-FF47-4F24-9DF9-256925549440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{395113F2-140B-4BBB-AE7F-D6362A6E3E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{395113F2-140B-4BBB-AE7F-D6362A6E3E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{395113F2-140B-4BBB-AE7F-D6362A6E3E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{395113F2-140B-4BBB-AE7F-D6362A6E3E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{960FBB80-6686-4A9D-9E77-D5C52F12DE10} = {36E0336E-6794-4D60-A3E3-822E3E550B93}
+		{E7D19F75-FF47-4F24-9DF9-256925549440} = {36E0336E-6794-4D60-A3E3-822E3E550B93}
+		{395113F2-140B-4BBB-AE7F-D6362A6E3E6F} = {D51EC8F1-360D-49AE-96A4-3EAA9E210269}
+	EndGlobalSection
+EndGlobal

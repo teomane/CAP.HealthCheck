@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres
+    container_name: cap.hc.postgres
+    command: postgres -c 'max_connections=500'
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=postgres
+      - ALLOW_IP_RANGE='0.0.0.0/0'
+      - TZ=Asia/Istanbul
+    ports:
+      - "5432:5432"
+    networks:
+      - cap_hc_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: cap.hc.pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@admin.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    depends_on:
+      - "postgres"
+    networks:
+      - cap_hc_network
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: cap.hc.rabbitmq
+    restart: always
+    networks:
+      - cap_hc_network
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "15692:15692"
+
+networks:
+  cap_hc_network:
+    name: cap-hc-network
