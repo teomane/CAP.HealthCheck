@@ -13,9 +13,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{90B16463-036F-47B6-B907-2D7E0EB86D34}"
 	ProjectSection(SolutionItems) = preProject
 		infrastructure\docker-compose-rabbitmq-postgresql.yml = infrastructure\docker-compose-rabbitmq-postgresql.yml
+		infrastructure\docker-compose-rabbitmq-mongodb.yml = infrastructure\docker-compose-rabbitmq-mongodb.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.CAP.HealthCheck.RabbitMQ", "src\DotNetCore.CAP.HealthCheck.RabbitMQ\DotNetCore.CAP.HealthCheck.RabbitMQ.csproj", "{B487FC09-585A-4037-86FC-4DAD5349A781}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.CAP.HealthCheck.MongoDB", "src\DotNetCore.CAP.HealthCheck.MongoDB\DotNetCore.CAP.HealthCheck.MongoDB.csproj", "{E6DF264D-9E51-4019-A026-F02856BC14CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.RabbitMQ.MongoDB", "samples\Sample.RabbitMQ.MongoDB\Sample.RabbitMQ.MongoDB.csproj", "{99335092-8096-4904-8B24-FBA7457177A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,11 +44,21 @@ Global
 		{B487FC09-585A-4037-86FC-4DAD5349A781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B487FC09-585A-4037-86FC-4DAD5349A781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B487FC09-585A-4037-86FC-4DAD5349A781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6DF264D-9E51-4019-A026-F02856BC14CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6DF264D-9E51-4019-A026-F02856BC14CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6DF264D-9E51-4019-A026-F02856BC14CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6DF264D-9E51-4019-A026-F02856BC14CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99335092-8096-4904-8B24-FBA7457177A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99335092-8096-4904-8B24-FBA7457177A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99335092-8096-4904-8B24-FBA7457177A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99335092-8096-4904-8B24-FBA7457177A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{960FBB80-6686-4A9D-9E77-D5C52F12DE10} = {36E0336E-6794-4D60-A3E3-822E3E550B93}
 		{E7D19F75-FF47-4F24-9DF9-256925549440} = {36E0336E-6794-4D60-A3E3-822E3E550B93}
 		{395113F2-140B-4BBB-AE7F-D6362A6E3E6F} = {D51EC8F1-360D-49AE-96A4-3EAA9E210269}
 		{B487FC09-585A-4037-86FC-4DAD5349A781} = {36E0336E-6794-4D60-A3E3-822E3E550B93}
+		{E6DF264D-9E51-4019-A026-F02856BC14CF} = {36E0336E-6794-4D60-A3E3-822E3E550B93}
+		{99335092-8096-4904-8B24-FBA7457177A2} = {D51EC8F1-360D-49AE-96A4-3EAA9E210269}
 	EndGlobalSection
 EndGlobal

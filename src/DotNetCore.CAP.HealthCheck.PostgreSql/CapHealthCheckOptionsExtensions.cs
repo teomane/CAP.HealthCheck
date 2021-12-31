@@ -18,7 +18,7 @@ namespace DotNetCore.CAP.HealthCheck
         {
             tags ??= new List<string> {"cap"};
             
-            options.RegisterExtension(new PostgreSqlCapHealthCheckOptionsExtension(name, failureStatus, tags, timeout));
+            options.RegisterExtension(new PostgreSqlConnectionCapHealthCheckOptionsExtension(name, failureStatus, tags, timeout));
 
             return options;
         }

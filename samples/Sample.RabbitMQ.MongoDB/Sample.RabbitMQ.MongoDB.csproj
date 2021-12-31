@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.2.0" />
+      <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\DotNetCore.CAP.HealthCheck.MongoDB\DotNetCore.CAP.HealthCheck.MongoDB.csproj" />
+      <ProjectReference Include="..\..\src\DotNetCore.CAP.HealthCheck.RabbitMQ\DotNetCore.CAP.HealthCheck.RabbitMQ.csproj" />
+      <ProjectReference Include="..\..\src\DotNetCore.CAP.HealthCheck\DotNetCore.CAP.HealthCheck.csproj" />
+    </ItemGroup>
+
+</Project>
