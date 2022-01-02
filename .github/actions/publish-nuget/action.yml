@@ -19,7 +19,6 @@ inputs:
     VERSION_SUFFIX:
         description: Version suffix
         required: false
-        default: *
     VERSION_STATIC:
         description: Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
         required: false
