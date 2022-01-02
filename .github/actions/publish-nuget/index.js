@@ -134,8 +134,9 @@ class Action {
             if (!parsedVersion)
                 this._printErrorAndExit("unable to extract version info!")
 
-            console.log(`Version: ${this.versionSuffix}`)
-            if (!this.versionSuffix)
+            console.log(`VersionSuffix: ${this.versionSuffix}`)
+            
+            if (this.versionSuffix)
                 this.version =  parsedVersion[1].concat("-", this.versionSuffix)
             else
                 this.version = parsedVersion[1]
