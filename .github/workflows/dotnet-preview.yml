@@ -15,14 +15,16 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.404
-    - name: Install dependencies
+    - name: Dotnet Restore
       run: dotnet restore
-    - name: Build
+    - name: Dotnet Build
       run: dotnet build --configuration Release --no-restore
     - name: Publish DotNetCore.CAP.HealthCheck
-      uses: brandedoutcast/publish-nuget@v2.5.2
+      uses: ./.github/actions/publish-nuget
+      #uses: brandedoutcast/publish-nuget@v2.5.2
       with:
           PROJECT_FILE_PATH: src/DotNetCore.CAP.HealthCheck/DotNetCore.CAP.HealthCheck.csproj
           VERSION_FILE_PATH: build/version.props
-          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$-rc${{ github.run_number }}
+          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          VERSION_SUFFIX: rc${{ github.run_number }}
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
