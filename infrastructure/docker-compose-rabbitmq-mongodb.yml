@@ -30,7 +30,6 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: cap.hc.rabbitmq
-    restart: always
     networks:
       - cap_hc_network
     ports:
