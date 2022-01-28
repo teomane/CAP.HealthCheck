@@ -9,7 +9,7 @@ namespace DotNetCore.CAP.HealthCheck.MongoDB
     {
         public static CapHealthCheckOptions AddMongoDBConnectionCheck(
             this CapHealthCheckOptions options,
-            string name = "cap.postgres.connection",
+            string name = "cap.mongodb.connection",
             HealthStatus? failureStatus = null,
             IEnumerable<string> tags = null,
             TimeSpan? timeout = null)

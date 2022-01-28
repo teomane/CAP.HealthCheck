@@ -12,6 +12,8 @@ namespace Sample.RabbitMQ.MongoDB
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            
             services.AddCap(options =>
             {
                 options.UseMongoDB("mongodb://admin:admin@localhost:27017");
@@ -20,7 +22,7 @@ namespace Sample.RabbitMQ.MongoDB
 
             services.AddHealthChecks()
                 .AddCapHealthCheck(setup =>
-                {
+                { 
                     setup.AddMongoDBConnectionCheck();
                     setup.AddRabbitMQConnectionCheck();
                 });
@@ -37,6 +39,8 @@ namespace Sample.RabbitMQ.MongoDB
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
+                
                 endpoints.MapHealthChecks("/health", new HealthCheckOptions()
                 {
                     ResponseWriter = ResponseUtil.WriteResponse

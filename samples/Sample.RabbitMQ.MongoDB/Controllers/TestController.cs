@@ -3,7 +3,7 @@ using DotNetCore.CAP;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Sample.RabbitMQ.PostgreSql.Controllers
+namespace Sample.RabbitMQ.MongoDB.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

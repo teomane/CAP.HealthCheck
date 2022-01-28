@@ -31,7 +31,7 @@ namespace DotNetCore.CAP.HealthCheck.PostgreSql.Published
         {
             string query =
                 $@"SELECT * FROM {_initializer.GetPublishedTableName()} where ""StatusName"" != 'Succeeded' order by ""Added"" desc limit 100;";
-
+            
             HealthCheckResult result;
 
             try
