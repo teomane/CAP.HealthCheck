@@ -24,6 +24,8 @@ namespace Sample.RabbitMQ.MongoDB
                 .AddCapHealthCheck(setup =>
                 { 
                     setup.AddMongoDBConnectionCheck();
+                    setup.AddMongoDBPublishedTableCheck();
+                    setup.AddMongoDBReceivedTableCheck();
                     setup.AddRabbitMQConnectionCheck();
                 });
         }

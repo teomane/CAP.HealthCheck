@@ -28,11 +28,29 @@ namespace Sample.RabbitMQ.MongoDB.Controllers
             
             return Ok();
         }
+        
+        [HttpGet("publish/error")]
+        public IActionResult PublishWithError()
+        {
+            string data = $"SampleData at {DateTime.Now}";
+            
+            _capPublisher.Publish("cap.test.key.error", data);
+            _logger.LogInformation($"Data Published: {data}");
+            
+            return Ok();
+        }
 
         [CapSubscribe("cap.test.key")]
         public void Subscribe(string data)
         {
             _logger.LogInformation($"Data arrived: {data}");
+        }
+        
+        [CapSubscribe("cap.test.key.error")]
+        public void SubscribeWithError(string data)
+        {
+            _logger.LogInformation($"Data arrived with error: {data}");
+            throw new Exception("Failed");
         }
     }
 }

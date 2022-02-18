@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.2.0" />
-      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="5.0.12" />
-      <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+      <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="6.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.2" />
+      <PackageReference Include="RabbitMQ.Client" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
