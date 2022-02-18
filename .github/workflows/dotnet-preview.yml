@@ -26,7 +26,7 @@ jobs:
           PROJECT_FILE_PATH: src/DotNetCore.CAP.HealthCheck/DotNetCore.CAP.HealthCheck.csproj
           VERSION_FILE_PATH: build/version.props
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          VERSION_SUFFIX: rc${{ github.run_number }}
+          VERSION_SUFFIX: preview${{ github.run_number }}
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
     - name: Publish DotNetCore.CAP.HealthCheck.PostgreSql
       uses: ./.github/actions/publish-nuget
@@ -35,7 +35,7 @@ jobs:
           PROJECT_FILE_PATH: src/DotNetCore.CAP.HealthCheck.PostgreSql/DotNetCore.CAP.HealthCheck.PostgreSql.csproj
           VERSION_FILE_PATH: build/version.props
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          VERSION_SUFFIX: rc${{ github.run_number }}
+          VERSION_SUFFIX: preview${{ github.run_number }}
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
     - name: Publish DotNetCore.CAP.HealthCheck.RabbitMQ
       uses: ./.github/actions/publish-nuget
@@ -44,7 +44,7 @@ jobs:
           PROJECT_FILE_PATH: src/DotNetCore.CAP.HealthCheck.RabbitMQ/DotNetCore.CAP.HealthCheck.RabbitMQ.csproj
           VERSION_FILE_PATH: build/version.props
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          VERSION_SUFFIX: rc${{ github.run_number }}
+          VERSION_SUFFIX: preview${{ github.run_number }}
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
     - name: Publish DotNetCore.CAP.HealthCheck.MongoDB
       uses: ./.github/actions/publish-nuget
@@ -53,5 +53,5 @@ jobs:
           PROJECT_FILE_PATH: src/DotNetCore.CAP.HealthCheck.MongoDB/DotNetCore.CAP.HealthCheck.MongoDB.csproj
           VERSION_FILE_PATH: build/version.props
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          VERSION_SUFFIX: rc${{ github.run_number }}
+          VERSION_SUFFIX: preview${{ github.run_number }}
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
