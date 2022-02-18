@@ -15,6 +15,7 @@ services:
   mongo-express:
     image: mongo-express
     container_name: cap.hc.mongoexpress
+    restart: always
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: admin
