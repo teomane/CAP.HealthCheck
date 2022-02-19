@@ -26,7 +26,7 @@ PM> Install-Package DotNetCore.CAP.HealthCheck.MongoDB
 
 ## Configuration
 
-```
+```cs
 services.AddHealthChecks()
     .AddCapHealthCheck(setup =>
     {
@@ -37,6 +37,8 @@ services.AddHealthChecks()
         
         # MongoDB
         setup.AddMongoDBConnectionCheck();
+        setup.AddMongoDBPublishedTableCheck();
+        setup.AddMongoDBReceivedTableCheck();
         
         # RabbitMQ
         setup.AddRabbitMQConnectionCheck();
@@ -46,23 +48,27 @@ services.AddHealthChecks()
 # Health Check Services
 As default, `cap` will be added in tags.
 
-## PostgreSql 
-### PostgreSqlConnectionCheck
-`AddPostgreSqlConnectionCheck` adds a health check service that tries to access both `Published` and `Received` table of the CAP. Basic select statement is used. If success, health check service returns Healthy result, otherwise Unhealthy. 
-Default service name is `cap.postgres.connection`.
+## Storage Health Checks
+### PostgreSql
 
-### PostgreSqlPublishedTableCheck
-`AddPostgreSqlPublishedTableCheck()` adds a health check service that checks for any non _Succeeded_ data in `Published` table.
-Shows failed data count and last 100 failed data. Default service name is `cap.postgres.publishedtable`.
+| Health Check Service               | Default Service Name          | Description                                                                                                                                                                   |
+|------------------------------------|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `AddPostgreSqlConnectionCheck`     | `cap.postgres.connection`     | Adds a health check service that tries to access both  `Published`  and  `Received`  table of the CAP. Basic select statement is used.                                        |
+| `AddPostgreSqlPublishedTableCheck` | `cap.postgres.publishedtable` | Adds a health check service that checks for  _Failed_  data in  `Published`  table using CAP's monitoring API.                                                                | 
+| `AddPostgreSqlReceivedTableCheck`  | `cap.postgres.receivedtable`  | Adds a health check service that checks for  _Failed_  data in  `Received`  table using CAP's monitoring API.                                                                 |
 
-### PostgreSqlReceivedTableCheck
-`AddPostgreSqlReceivedTableCheck()` adds a health check service that checks for any non _Succeeded_ data in `Received` table.
-Shows failed data count and last 100 failed data. Default service name is `cap.postgres.receivedtable`.
+### MongoDB
 
-## MongoDB
-### MongoDBConnectionCheck
-`AddMongoDBConnectionCheck` adds a health check service that tries to connect CAP database and list collections. If success, health check service returns Healthy result, otherwise Unhealthy.
-Default service name is `cap.mongodb.connection`.
+| Health Check Service             | Default Service Name         | Description                                                                                                         |
+|----------------------------------|------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| `AddMongoDBConnectionCheck`      | `cap.mongodb.connection`     | Adds a health check service that tries to connect CAP database and list collections.                                |
+| `AddMongoDBPublishedTableCheck`  | `cap.mongodb.publishedtable` | Adds a health check service that checks for  _Failed_  data in  `Published`  collection using CAP's monitoring API. |
+| `AddMongoDBReceivedTableCheck`   | `cap.mongodb.receivedtable`  | Adds a health check service that checks for  _Failed_  data in  `Received`  collection using CAP's monitoring API.  |
 
-## RabbitMQ
-### RabbitMQConnectionCheck
+
+## Transport Health Checks
+### RabbitMQ
+
+| Health Check Service          | Default Service Name       | Description                                                 |
+|-------------------------------|----------------------------|-------------------------------------------------------------|
+|  `AddRabbitMQConnectionCheck` |  `cap.rabbitmq.connection` | Adds a healthcheck service that checks RabbitMQ connection. |
