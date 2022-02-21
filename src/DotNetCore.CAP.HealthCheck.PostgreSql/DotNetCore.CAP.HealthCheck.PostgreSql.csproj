@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <RepositoryUrl>https://github.com/teomane/CAP.HealthCheck.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
