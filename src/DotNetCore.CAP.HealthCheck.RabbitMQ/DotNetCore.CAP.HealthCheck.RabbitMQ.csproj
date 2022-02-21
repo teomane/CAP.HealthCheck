@@ -4,7 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <RepositoryUrl>https://github.com/teomane/CAP.HealthCheck.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageLicenseUrl>https://github.com/teomane/CAP.HealthCheck/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageLicense>https://github.com/teomane/CAP.HealthCheck/blob/main/LICENSE</PackageLicense>
     </PropertyGroup>
 
     <ItemGroup>
