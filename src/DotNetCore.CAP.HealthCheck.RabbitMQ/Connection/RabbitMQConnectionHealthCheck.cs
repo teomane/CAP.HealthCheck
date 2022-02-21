@@ -1,8 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Razor.Internal;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
