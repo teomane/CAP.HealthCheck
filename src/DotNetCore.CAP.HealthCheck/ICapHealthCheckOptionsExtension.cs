@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace DotNetCore.CAP.HealthCheck
+namespace DotNetCore.CAP.HealthCheck;
+
+public interface ICapHealthCheckOptionsExtension
 {
-    public interface ICapHealthCheckOptionsExtension
-    {
-        void AddCheck(IHealthChecksBuilder builder);
-    }
+    void AddCheck(IHealthChecksBuilder builder);
 }

@@ -2,17 +2,16 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
-namespace DotNetCore.CAP.HealthCheck
+namespace DotNetCore.CAP.HealthCheck;
+
+public static class ConfigureExtensions
 {
-    public static class ConfigureExtensions
+    public static void MapCapHealthChecks(this IEndpointRouteBuilder endpoints, string pattern = "/health-cap")
     {
-        public static void MapCapHealthChecks(this IEndpointRouteBuilder endpoints, string pattern = "/health-cap")
+        endpoints.MapHealthChecks(pattern, new HealthCheckOptions()
         {
-            endpoints.MapHealthChecks(pattern, new HealthCheckOptions()
-            {
-                Predicate = (check) => check.Tags.Contains("cap"),
-                ResponseWriter = ResponseUtil.WriteResponse
-            });
-        }
+            Predicate = (check) => check.Tags.Contains("cap"),
+            ResponseWriter = ResponseUtil.WriteResponse
+        });
     }
 }
