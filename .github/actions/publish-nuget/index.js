@@ -84,7 +84,7 @@ class Action {
             process.stdout.write(`::set-output name=SYMBOLS_PACKAGE_PATH::${path.resolve(symbolsFilename)}` + os.EOL)
         }
 
-        if (this.tagCommit && this.versionSuffix)
+        if (this.tagCommit && !this.versionSuffix)
             this._tagCommit(version)
     }
 
