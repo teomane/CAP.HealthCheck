@@ -11,17 +11,17 @@ CAP HealthCheck can be installed in your project with the following command.
 PM> Install-Package DotNetCore.CAP.HealthCheck
 ```
 
-CAP Health Check supports RabbitMQ Health Check as message queue health check, following package is available to install:
-
-```
-PM> Install-Package DotNetCore.CAP.HealthCheck.RabbitMQ
-```
-
 CAP Health Check supports PostgreSql，MongoDB as event log storage health check.
 
 ```
 PM> Install-Package DotNetCore.CAP.HealthCheck.PostgreSql
 PM> Install-Package DotNetCore.CAP.HealthCheck.MongoDB
+```
+
+CAP Health Check supports RabbitMQ Health Check as message queue health check, following package is available to install:
+
+```
+PM> Install-Package DotNetCore.CAP.HealthCheck.RabbitMQ
 ```
 
 ## Configuration
@@ -72,3 +72,14 @@ As default, `cap` will be added in tags.
 | Health Check Service          | Default Service Name       | Description                                                 |
 |-------------------------------|----------------------------|-------------------------------------------------------------|
 |  `AddRabbitMQConnectionCheck` |  `cap.rabbitmq.connection` | Adds a healthcheck service that checks RabbitMQ connection. |
+
+# Sample Applications and Infrastructures
+
+There are two sample applications and each one has own docker compose file to run required infrastructures. **Please check for services and their ports in docker compose files.**
+
+Example command to run docker compose files:
+```
+docker-compose -f docker-compose-rabbitmq-postgresql.yml up -d
+```
+
+Sample applications has a controller named _Test_ with route `api/test`. There are two endpoints for publishing an event with success and fail scenarios. `http://localhost:5000/api/test/publish` publishes an event with successful subscription. `http://localhost:5000/api/test/publish/error` publishes an event with failed subscription. The healthcheck service is available at `http://localhost:5000/health`.
