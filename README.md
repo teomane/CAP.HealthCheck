@@ -27,23 +27,44 @@ PM> Install-Package DotNetCore.CAP.HealthCheck.RabbitMQ
 ## Configuration
 
 ```cs
-services.AddHealthChecks()
-    .AddCapHealthCheck(setup =>
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    services.AddHealthChecks()
+        .AddCapHealthCheck(setup =>
+        {
+            # PostgreSql
+            setup.AddPostgreSqlConnectionCheck();
+            setup.AddPostgreSqlPublishedTableCheck();
+            setup.AddPostgreSqlReceivedTableCheck();
+            
+            # MongoDB
+            setup.AddMongoDBConnectionCheck();
+            setup.AddMongoDBPublishedTableCheck();
+            setup.AddMongoDBReceivedTableCheck();
+            
+            # RabbitMQ
+            setup.AddRabbitMQConnectionCheck();
+        });
+
+    // ...
+}
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    // ...
+
+    app.UseEndpoints(endpoints =>
     {
-        # PostgreSql
-        setup.AddPostgreSqlConnectionCheck();
-        setup.AddPostgreSqlPublishedTableCheck();
-        setup.AddPostgreSqlReceivedTableCheck();
-        
-        # MongoDB
-        setup.AddMongoDBConnectionCheck();
-        setup.AddMongoDBPublishedTableCheck();
-        setup.AddMongoDBReceivedTableCheck();
-        
-        # RabbitMQ
-        setup.AddRabbitMQConnectionCheck();
+        endpoints.MapCapHealthChecks();
     });
+    
+    // ...
+}
 ```
+
+Health check service will be available at route `/health-cap` by default.
 
 # Health Check Services
 As default, `cap` will be added in tags.

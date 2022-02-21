@@ -6,31 +6,31 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace DotNetCore.CAP.HealthCheck.MongoDB.Connection
+namespace DotNetCore.CAP.HealthCheck.MongoDB.Connection;
+
+public class MongoDBConnectionHealthCheck : IHealthCheck
 {
-    public class MongoDBConnectionHealthCheck : IHealthCheck
+    public IMongoDatabase Database { get; }
+
+    public MongoDBConnectionHealthCheck(IOptions<MongoDBOptions> options)
     {
-        public IMongoDatabase Database { get; }
+        var client = new MongoClient(options.Value.DatabaseConnection);
+        Database = client.GetDatabase(options.Value.DatabaseName);
+    }
 
-        public MongoDBConnectionHealthCheck(IOptions<MongoDBOptions> options)
+    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
+        CancellationToken cancellationToken = new CancellationToken())
+    {
+        try
         {
-            var client = new MongoClient(options.Value.DatabaseConnection);
-            Database = client.GetDatabase(options.Value.DatabaseName);
+            using var cursor = await Database.ListCollectionNamesAsync(cancellationToken: cancellationToken);
+            await cursor.FirstAsync(cancellationToken);
+
+            return HealthCheckResult.Healthy();
         }
-        
-        public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = new CancellationToken())
+        catch (Exception ex)
         {
-            try
-            {
-                using var cursor = await Database.ListCollectionNamesAsync(cancellationToken: cancellationToken);
-                await cursor.FirstAsync(cancellationToken);
-
-                return HealthCheckResult.Healthy();
-            }
-            catch (Exception ex)
-            {
-                return new HealthCheckResult(context.Registration.FailureStatus, exception: ex);
-            }
+            return new HealthCheckResult(context.Registration.FailureStatus, exception: ex);
         }
     }
 }

@@ -5,38 +5,36 @@ using DotNetCore.CAP.Monitoring;
 using DotNetCore.CAP.Persistence;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace DotNetCore.CAP.HealthCheck.PostgreSql.Received
+namespace DotNetCore.CAP.HealthCheck.PostgreSql.Received;
+
+public class PostgreSqlReceivedTableHealthCheck : IHealthCheck
 {
-    public class PostgreSqlReceivedTableHealthCheck : IHealthCheck
+    private readonly IMonitoringApi _monitoringApi;
+
+    public PostgreSqlReceivedTableHealthCheck(
+        IDataStorage dataStorage)
     {
-        private readonly IMonitoringApi _monitoringApi;
+        _monitoringApi = dataStorage.GetMonitoringApi();
+    }
 
-        public PostgreSqlReceivedTableHealthCheck(
-            IDataStorage dataStorage)
+    public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
+        CancellationToken cancellationToken = new CancellationToken())
+    {
+        HealthCheckResult result;
+
+        try
         {
-            _monitoringApi = dataStorage.GetMonitoringApi();
+            int failedCount = _monitoringApi.ReceivedFailedCount();
+
+            result = failedCount > 0
+                ? HealthCheckResult.Unhealthy($"Failed Count: {failedCount}")
+                : HealthCheckResult.Healthy();
+        }
+        catch (Exception e)
+        {
+            result = HealthCheckResult.Unhealthy(e.Message, e);
         }
 
-        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
-            CancellationToken cancellationToken = new CancellationToken())
-        {
-            HealthCheckResult result;
-
-            try
-            {
-                
-                int failedCount = _monitoringApi.ReceivedFailedCount();
-
-                result = failedCount > 0
-                    ? HealthCheckResult.Unhealthy($"Failed Count: {failedCount}")
-                    : HealthCheckResult.Healthy();
-            }
-            catch (Exception e)
-            {
-                result = HealthCheckResult.Unhealthy(e.Message, e);
-            }
-
-            return Task.FromResult(result);
-        }
+        return Task.FromResult(result);
     }
 }
