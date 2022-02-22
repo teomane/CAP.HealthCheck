@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="build/logo.png" alt="Sublime's custom image"/>
+</p>
+
 # CAP.HealthCheck
 
 CAP HealthCheck is the health check library of CAP.
