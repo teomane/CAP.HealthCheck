@@ -6,6 +6,7 @@
         <RepositoryType>git</RepositoryType>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageIcon>icon.png</PackageIcon>
+        <PackageDescription>CAP HealthCheck is the health check library of CAP.</PackageDescription>
     </PropertyGroup>
     
     <ItemGroup>
