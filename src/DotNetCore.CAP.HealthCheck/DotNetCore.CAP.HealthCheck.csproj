@@ -5,7 +5,12 @@
         <RepositoryUrl>https://github.com/teomane/CAP.HealthCheck.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicense>https://github.com/teomane/CAP.HealthCheck/blob/main/LICENSE</PackageLicense>
+        <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="..\..\build\icon.png" Pack="true" PackagePath=""/>
+    </ItemGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
