@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="build/logo.png" alt="Sublime's custom image"/>
+  <img height="140" src="build/logo.png" alt="Sublime's custom image"/>
 </p>
 
 # CAP.HealthCheck
