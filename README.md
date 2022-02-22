@@ -4,7 +4,7 @@
 
 # CAP.HealthCheck
 
-CAP HealthCheck is the health check library of CAP.
+The health check library of CAP.
 
 # Getting Started
 ## Nuget
