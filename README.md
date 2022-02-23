@@ -6,6 +6,10 @@
 
 The health check library of CAP.
 
+Did this project help you? [You can now buy me a beer 😎🍺.](https://www.buymeacoffee.com/teomane)
+
+[!["You can now buy me a beer 😎🍺."](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/teomane)
+
 # Getting Started
 ## Nuget
 
