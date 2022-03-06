@@ -29,6 +29,16 @@ public static class ResponseUtil
                     healthReportEntry.Value.Status.ToString());
                 jsonWriter.WriteString("description",
                     healthReportEntry.Value.Description);
+                jsonWriter.WriteString("duration",
+                    healthReportEntry.Value.Duration.ToString());
+
+                jsonWriter.WriteStartArray("tags");
+                foreach (string tag in healthReportEntry.Value.Tags)
+                {
+                    jsonWriter.WriteStringValue(tag);
+                }
+                jsonWriter.WriteEndArray();
+                
                 jsonWriter.WriteStartObject("data");
 
                 foreach (var item in healthReportEntry.Value.Data)

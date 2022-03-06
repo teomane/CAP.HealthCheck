@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNetCore.CAP.Monitoring;
@@ -21,13 +22,20 @@ public class PostgreSqlPublishedTableHealthCheck : IHealthCheck
     {
         HealthCheckResult result;
 
-        int failedCount = _monitoringApi.PublishedFailedCount();
-
         try
         {
+            int failedCount = _monitoringApi.PublishedFailedCount();
+            int succeededCount = _monitoringApi.PublishedSucceededCount();
+
+            var data = new Dictionary<string, object>()
+            {
+                {"failedCount", failedCount},
+                {"succeededCount", succeededCount}
+            };
+            
             result = failedCount > 0
-                ? HealthCheckResult.Unhealthy($"Failed Count: {failedCount}")
-                : HealthCheckResult.Healthy();
+                ? HealthCheckResult.Unhealthy($"Failed Count: {failedCount}", data: data)
+                : HealthCheckResult.Healthy(data: data);
         }
         catch (Exception e)
         {

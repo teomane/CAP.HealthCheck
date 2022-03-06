@@ -106,9 +106,12 @@ As default, `cap` will be added in tags.
 
 There are two sample applications and each one has own docker compose file to run required infrastructures. **Please check for services and their ports in docker compose files.**
 
-Example command to run docker compose files:
+Example command to run a docker compose files:
 ```
 docker-compose -f docker-compose-rabbitmq-postgresql.yml up -d
 ```
 
-Sample applications has a controller named _Test_ with route `api/test`. There are two endpoints for publishing an event with success and fail scenarios. `http://localhost:5000/api/test/publish` publishes an event with successful subscription. `http://localhost:5000/api/test/publish/error` publishes an event with failed subscription. The healthcheck service is available at `http://localhost:5000/health`.
+Sample applications has a controller named _Test_ with route `api/test`. There are two endpoints for publishing an event with success and fail scenarios. 
+* [`http://localhost:5000/api/test/publish`](http://localhost:5000/api/test/publish) publishes an event with successful subscription. 
+* [`http://localhost:5000/api/test/publish/error`](http://localhost:5000/api/test/publish/error) publishes an event with failed subscription. 
+* The healthcheck service is available at [`http://localhost:5000/health-cap`](http://localhost:5000/health-cap).

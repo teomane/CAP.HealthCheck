@@ -14,4 +14,9 @@ public static class ConfigureExtensions
             ResponseWriter = ResponseUtil.WriteResponse
         });
     }
+    
+    public static void MapCapHealthChecks(this IEndpointRouteBuilder endpoints, HealthCheckOptions options, string pattern = "/health-cap")
+    {
+        endpoints.MapHealthChecks(pattern, options);
+    }
 }
