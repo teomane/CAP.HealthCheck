@@ -17,22 +17,27 @@ public class PostgreSqlPublishedTableHealthCheck : IHealthCheck
         _monitoringApi = dataStorage.GetMonitoringApi();
     }
 
-    public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
+    public async Task<HealthCheckResult> CheckHealthAsync(
+        HealthCheckContext context,
         CancellationToken cancellationToken = new CancellationToken())
     {
         HealthCheckResult result;
 
         try
         {
-            int failedCount = _monitoringApi.PublishedFailedCount();
-            int succeededCount = _monitoringApi.PublishedSucceededCount();
+            int failedCount = await _monitoringApi.PublishedFailedCount();
+            int succeededCount = await _monitoringApi.PublishedSucceededCount();
 
             var data = new Dictionary<string, object>()
             {
-                {"failedCount", failedCount},
-                {"succeededCount", succeededCount}
+                {
+                    "failedCount", failedCount
+                },
+                {
+                    "succeededCount", succeededCount
+                }
             };
-            
+
             result = failedCount > 0
                 ? HealthCheckResult.Unhealthy($"Failed Count: {failedCount}", data: data)
                 : HealthCheckResult.Healthy(data: data);
@@ -42,6 +47,6 @@ public class PostgreSqlPublishedTableHealthCheck : IHealthCheck
             result = HealthCheckResult.Unhealthy(e.Message, e);
         }
 
-        return Task.FromResult(result);
+        return result;
     }
 }
