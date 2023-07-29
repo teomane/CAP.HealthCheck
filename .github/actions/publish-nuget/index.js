@@ -70,9 +70,6 @@ class Action {
 
         console.log(pushOutput)
 
-        if (/error/.test(pushOutput))
-            this._printErrorAndExit(`${/error.*/.exec(pushOutput)[0]}`)
-
         const packageFilename = packages.filter(p => p.endsWith(".nupkg"))[0],
             symbolsFilename = packages.filter(p => p.endsWith(".snupkg"))[0]
 
