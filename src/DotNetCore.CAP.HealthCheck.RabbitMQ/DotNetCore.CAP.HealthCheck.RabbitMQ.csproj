@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <RepositoryUrl>https://github.com/teomane/CAP.HealthCheck.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -15,9 +15,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="7.1.4" />
-      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="7.0.9" />
-      <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
+      <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="8.3.3" />
+      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="8.0.15" />
+      <PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
     </ItemGroup>
 
     <ItemGroup>

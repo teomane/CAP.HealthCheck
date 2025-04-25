@@ -9,32 +9,36 @@ namespace DotNetCore.CAP.HealthCheck.RabbitMQ.Connection;
 
 public class RabbitMQConnectionHealthCheck : IHealthCheck
 {
-    private readonly IConnection _connection;
+    private readonly RabbitMQOptions _options;
 
     public RabbitMQConnectionHealthCheck(IOptions<RabbitMQOptions> options)
     {
-        _connection = CreateConnectionFactory(options.Value);
+        _options = options.Value;
     }
 
-    public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
+    public async Task<HealthCheckResult> CheckHealthAsync(
+        HealthCheckContext context,
         CancellationToken cancellationToken = new CancellationToken())
     {
         try
         {
-            using (_connection.CreateModel())
+            var connection = await CreateConnectionFactory(_options, cancellationToken);
+            await using (connection)
             {
-                return Task.FromResult(
-                    HealthCheckResult.Healthy());
+                var channel = await connection.CreateChannelAsync(cancellationToken: cancellationToken);
+                await using (channel)
+                {
+                    return HealthCheckResult.Healthy();
+                }
             }
         }
         catch (Exception ex)
         {
-            return Task.FromResult(
-                new HealthCheckResult(context.Registration.FailureStatus, exception: ex));
+            return new HealthCheckResult(context.Registration.FailureStatus, exception: ex);
         }
     }
 
-    private IConnection CreateConnectionFactory(RabbitMQOptions rabbitMqOptions)
+    private Task<IConnection> CreateConnectionFactory(RabbitMQOptions rabbitMqOptions, CancellationToken cancellationToken)
     {
         var factory = new ConnectionFactory()
         {
@@ -45,6 +49,6 @@ public class RabbitMQConnectionHealthCheck : IHealthCheck
             VirtualHost = rabbitMqOptions.VirtualHost
         };
 
-        return factory.CreateConnection();
+        return factory.CreateConnectionAsync(cancellationToken);
     }
 }

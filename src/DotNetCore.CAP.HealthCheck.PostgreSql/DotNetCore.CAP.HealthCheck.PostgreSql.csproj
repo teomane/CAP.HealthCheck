@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <RepositoryUrl>https://github.com/teomane/CAP.HealthCheck.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -15,9 +15,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Dapper" Version="2.0.123" />
-      <PackageReference Include="DotNetCore.CAP.PostgreSql" Version="7.1.4" />
-      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.9" />
+      <PackageReference Include="Dapper" Version="2.1.66" />
+      <PackageReference Include="DotNetCore.CAP.PostgreSql" Version="8.3.3" />
+      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.15" />
     </ItemGroup>
 
     <ItemGroup>
